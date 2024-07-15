@@ -79,16 +79,17 @@
       let progressInterval;
 
       dragObject.addEventListener("mousedown", (e) => {
-        const offsetX = e.clientX - dragObject.getBoundingClientRect().left;
-        const offsetY = e.clientY - dragObject.getBoundingClientRect().top;
+        const offsetX = dragObject.getBoundingClientRect().left;
+        const offsetY = dragObject.getBoundingClientRect().top;
 
         function onMouseMove(e) {
           dragObject.style.left = `${e.clientX - offsetX}px`;
           dragObject.style.top = `${e.clientY - offsetY}px`;
 
           const dragRect = dragObject.getBoundingClientRect();
-          const targetRect = targetArea.getBoundingClientRect();
 
+          // console.log(targetArea.getBoundingClientRect());
+          const targetRect = targetArea.getBoundingClientRect();
           if (
             dragRect.left >= targetRect.left &&
             dragRect.top >= targetRect.top &&
