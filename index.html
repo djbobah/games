@@ -4,149 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drag and Hold Game</title>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
-        font-family: Arial, sans-serif;
-      }
-      #game-container {
-        text-align: center;
-        position: relative;
-      }
-      #drag-object {
-        width: 100px;
-        height: 100px;
-        background-color: #ff4d4d;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        cursor: pointer;
-        position: absolute;
-        top: 50px;
-        left: 50px;
-      }
-      #target-area {
-        width: 150px;
-        height: 150px;
-        border: 2px dashed #333;
-        position: absolute;
-        top: 200px;
-        left: 200px;
-      }
-      #progress-bar {
-        width: 100%;
-        height: 20px;
-        background-color: #ddd;
-        margin-top: 20px;
-        position: relative;
-      }
-      #progress {
-        height: 100%;
-        background-color: #4caf50;
-        width: 0;
-      }
-      #message {
-        margin-top: 20px;
-        font-size: 18px;
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="game-container">
-      <div id="drag-object">Drag me</div>
-      <div id="target-area"></div>
-      <div id="progress-bar">
-        <div id="progress"></div>
+    <div class="game-container">
+      <div class="game-name"></div>
+      <div class="task-and-progress">
+        <div class="task"></div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
       </div>
-      <div id="message">Drag the object to the target area and hold!</div>
+      <div class="target-object">
+        <div class="target-area"></div>
+      </div>
+
+      <div class="drag-object">Drag me</div>
+      <div class="message">Drag the object to the target area and hold!</div>
     </div>
 
-    <script>
-      const dragObject = document.getElementById("drag-object");
-      const targetArea = document.getElementById("target-area");
-      const progressBar = document.getElementById("progress-bar");
-      const progress = document.getElementById("progress");
-      const message = document.getElementById("message");
-      let holdStartTime;
-      let holdDuration = 3000; // Duration to hold in milliseconds (3 seconds)
-      let holding = false;
-      let progressInterval;
-
-      dragObject.addEventListener("mousedown", (e) => {
-        const offsetX = dragObject.getBoundingClientRect().left;
-        const offsetY = dragObject.getBoundingClientRect().top;
-
-        function onMouseMove(e) {
-          dragObject.style.left = `${e.clientX - offsetX}px`;
-          dragObject.style.top = `${e.clientY - offsetY}px`;
-
-          const dragRect = dragObject.getBoundingClientRect();
-
-          // console.log(targetArea.getBoundingClientRect());
-          const targetRect = targetArea.getBoundingClientRect();
-          if (
-            dragRect.left >= targetRect.left &&
-            dragRect.top >= targetRect.top &&
-            dragRect.right <= targetRect.right &&
-            dragRect.bottom <= targetRect.bottom
-          ) {
-            if (!holding) {
-              holdStartTime = Date.now();
-              holding = true;
-              message.textContent = "Keep holding...";
-              progressInterval = setInterval(updateProgress, 100);
-            }
-          } else {
-            if (holding) {
-              holding = false;
-              message.textContent =
-                "Drag the object to the target area and hold!";
-              clearInterval(progressInterval);
-              progress.style.width = "0";
-            }
-          }
-        }
-
-        function onMouseUp() {
-          document.removeEventListener("mousemove", onMouseMove);
-          document.removeEventListener("mouseup", onMouseUp);
-
-          if (holding) {
-            holding = false;
-            const holdTime = Date.now() - holdStartTime;
-            clearInterval(progressInterval);
-            progress.style.width = "0";
-
-            if (holdTime >= holdDuration) {
-              message.textContent = "Bleeding stopped! Well done!";
-            } else {
-              message.textContent =
-                "You need to hold longer to stop the bleeding!";
-            }
-          }
-
-          dragObject.style.left = "50px";
-          dragObject.style.top = "50px";
-        }
-
-        document.addEventListener("mousemove", onMouseMove);
-        document.addEventListener("mouseup", onMouseUp);
-      });
-
-      function updateProgress() {
-        const elapsedTime = Date.now() - holdStartTime;
-        const progressPercentage = Math.min(
-          (elapsedTime / holdDuration) * 100,
-          100
-        );
-        progress.style.width = `${progressPercentage}%`;
-      }
-    </script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

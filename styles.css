@@ -1,0 +1,94 @@
+:root {
+  font-family: "Fira Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 16px);
+  background-color: #f0f0f0;
+  /* font-family: Arial, sans-serif; */
+  box-sizing: border-box;
+}
+.game-container {
+  text-align: center;
+  position: relative;
+  border: 6px solid #9e9e9e;
+  box-sizing: border-box;
+  height: 100%;
+  width: 754px;
+  border-radius: 10px;
+
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.game-name {
+  background-color: #08a8be;
+  width: 300px;
+  height: 50px;
+  border-radius: 30px;
+  margin: 0 auto;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 20px;
+}
+.task-and-progress {
+  margin: 0 30px;
+  font-size: 40px;
+  font-weight: 500;
+}
+.target-object {
+  background-image: url("./assets/hold/backgrounds/palm_scratch.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  width: 500px;
+  height: 300px;
+}
+
+.drag-object {
+  width: 100px;
+  height: 100px;
+  background-color: #ff4d4d;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.target-area {
+  width: 150px;
+  height: 150px;
+  border: 2px dashed #333;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+}
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  margin-top: 20px;
+  position: relative;
+}
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0;
+}
+.message {
+  margin-top: 20px;
+  font-size: 18px;
+}
