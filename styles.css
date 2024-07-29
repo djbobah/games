@@ -46,7 +46,7 @@ body {
   font-weight: 500;
 }
 .target-object {
-  background-image: url("./assets/hold/backgrounds/palm_scratch.webp");
+  /* background-image: url("./assets/hold/backgrounds/palm_scratch.webp"); */
   background-repeat: no-repeat;
   background-size: contain;
 
