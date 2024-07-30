@@ -14,21 +14,25 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="game-container">
+    <section class="game-container">
       <div class="game-name"></div>
-      <div class="task-and-progress">
-        <div class="task"></div>
-        <div class="progress-bar">
-          <div class="progress"></div>
+
+      <div class="game-content">
+        <div class="task-and-progress">
+          <div class="task"></div>
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+        </div>
+
+        <div class="target-object">
+          <div class="drag-container">
+            <div class="drag-object-target"></div>
+            <div class="drag-object"></div>
+          </div>
         </div>
       </div>
-      <div class="target-object">
-        <div class="target-area"></div>
-      </div>
-
-      <div class="drag-object">Drag me</div>
-      <div class="message">Drag the object to the target area and hold!</div>
-    </div>
+    </section>
 
     <script type="module" src="index.js"></script>
   </body>

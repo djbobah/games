@@ -1,6 +1,6 @@
 export const data = {
   game: "название клона",
-  linkGesture: "/assets/hold/gestures/ice.webp",
+  linkGesture: "./assets/hold/gestures/ice.webp",
   linkBackground: "./assets/hold/backgrounds/palm_scratch.webp",
   linkLike: "./assets/hold/likes/plus_green.webp",
   textTitle: "Оказание помощи",
